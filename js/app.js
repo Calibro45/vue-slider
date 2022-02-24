@@ -28,192 +28,203 @@ const app = new Vue ( {
                 titolo: 'The last of us 2',
                 descrizione: 'Vivi un emozionante storia in questa seconda parte dell\' avventura di Ellie e Joel, incentrata su un cammino fatto di violenza e vendetta.',
             },
-        ]
+        ], 
+        active: true,   
+    },
+    methods: {
+        incrementaSlide: function(i) {
+            let activeElement = i;
+            if(activeElement < this.slideObject.length - 1) {
+                activeElement++;
+
+            }
+        }
     }
+
 })
 console.log(app);
 
-const slideObject = [
-    {
-        immagine: 'img/rdr2.jpg',
-        titolo: 'Red Dead Redemption 2',
-        descrizione: 'Rivivi un avventura epica nel selvaggio west, in questo prequel targato Rockstar, e segui le vicende di Arthur e la sua banda.',
-    },
-    {
-        immagine: 'img/sifu.jpg',
-        titolo: 'Sifu',
-        descrizione: 'Seconda opera del Team Slowcap, gettati nella mischia in questo action picchiaduro che metterà a dura prova la tua tenacia.',
-    },
-    {
-        immagine: 'img/spiderman.jpg',
-        titolo: 'Marvel Spiderman',
-        descrizione: 'Nulla da dire è Spiderman. indossa il costume e swinga fra i palazzi.',
-    },
-    {
-        immagine: 'img/the-witcher-3.jpg',
-        titolo: 'The Witcher 3',
-        descrizione: 'Terzo capitolo che chiude l \' epica avventura dello strigo firmata CD Project.',
-    },
-    {
-        immagine: 'img/tlou2.jpg',
-        titolo: 'The last of us 2',
-        descrizione: 'Vivi un emozionante storia in questa seconda parte dell\' avventura di Ellie e Joel, incentrata su un cammino fatto di violenza e vendetta.',
-    },
-]
-console.log(slideObject);
+// const slideObject = [
+//     {
+//         immagine: 'img/rdr2.jpg',
+//         titolo: 'Red Dead Redemption 2',
+//         descrizione: 'Rivivi un avventura epica nel selvaggio west, in questo prequel targato Rockstar, e segui le vicende di Arthur e la sua banda.',
+//     },
+//     {
+//         immagine: 'img/sifu.jpg',
+//         titolo: 'Sifu',
+//         descrizione: 'Seconda opera del Team Slowcap, gettati nella mischia in questo action picchiaduro che metterà a dura prova la tua tenacia.',
+//     },
+//     {
+//         immagine: 'img/spiderman.jpg',
+//         titolo: 'Marvel Spiderman',
+//         descrizione: 'Nulla da dire è Spiderman. indossa il costume e swinga fra i palazzi.',
+//     },
+//     {
+//         immagine: 'img/the-witcher-3.jpg',
+//         titolo: 'The Witcher 3',
+//         descrizione: 'Terzo capitolo che chiude l \' epica avventura dello strigo firmata CD Project.',
+//     },
+//     {
+//         immagine: 'img/tlou2.jpg',
+//         titolo: 'The last of us 2',
+//         descrizione: 'Vivi un emozionante storia in questa seconda parte dell\' avventura di Ellie e Joel, incentrata su un cammino fatto di violenza e vendetta.',
+//     },
+// ]
+// console.log(slideObject);
 
-// recupero dal DOM i contenitori del carusel
+// // recupero dal DOM i contenitori del carusel
 
-const slider = document.getElementsByClassName('slider')[0];
-//console.log(slider);
+// const slider = document.getElementsByClassName('slider')[0];
+// //console.log(slider);
 
-const slideWrapper = document.querySelector('.slide-wrapper');
-//console.log(slideWrapper);
+// const slideWrapper = document.querySelector('.slide-wrapper');
+// //console.log(slideWrapper);
 
-// recupero dal DOM i controlli del carusel e li appendo
+// // recupero dal DOM i controlli del carusel e li appendo
 
-const controlsWrapper = document.createElement('ol');
-controlsWrapper.classList.add('controls-wrapper');
-slider.append(controlsWrapper);
-//console.log(controlsWrapper);
+// const controlsWrapper = document.createElement('ol');
+// controlsWrapper.classList.add('controls-wrapper');
+// slider.append(controlsWrapper);
+// //console.log(controlsWrapper);
 
-// recupero dal DOM i bottoni per le slide
+// // recupero dal DOM i bottoni per le slide
 
-const arrowUp = document.getElementsByClassName('arrow-up')[0];
-const arrowDown = document.getElementsByClassName('arrow-down')[0];
-//console.log(arrowUp, arrowDown);
+// const arrowUp = document.getElementsByClassName('arrow-up')[0];
+// const arrowDown = document.getElementsByClassName('arrow-down')[0];
+// //console.log(arrowUp, arrowDown);
 
-// imposto una variabile contatore per impostare l'active
+// // imposto una variabile contatore per impostare l'active
 
-let activeElement = 0;
+// let activeElement = 0;
 
-// ciclo for each per creazione elementi del dom
+// // ciclo for each per creazione elementi del dom
 
-slideObject.forEach((elememt) => {
+// slideObject.forEach((elememt) => {
 
-    const slideContent = elememt;
-    //console.log(slideContent);
+//     const slideContent = elememt;
+//     //console.log(slideContent);
 
-    const slideCard = sliderItem(slideContent);
-    //console.log(slideCard);
+//     const slideCard = sliderItem(slideContent);
+//     //console.log(slideCard);
 
-    const controlSlider = controlliSlider(slideContent);
-    //console.log(controlSlider);
+//     const controlSlider = controlliSlider(slideContent);
+//     //console.log(controlSlider);
 
-    slideWrapper.innerHTML += slideCard;
+//     slideWrapper.innerHTML += slideCard;
 
-    controlsWrapper.innerHTML += controlSlider;
+//     controlsWrapper.innerHTML += controlSlider;
 
-})
+// })
 
-// fuzione per ricavare le proprieta degli oggetti da inserire
+// // fuzione per ricavare le proprieta degli oggetti da inserire
 
-function sliderItem ( {immagine, titolo, descrizione} ) {
+// function sliderItem ( {immagine, titolo, descrizione} ) {
 
-    return `
+//     return `
 
-        <div class="item">
-            <img src="${immagine}" alt="">
-            <div class="desc-wrap">
-                <h2 class="title">${titolo}</h2>
-                <p class="subtitle">${descrizione}</p>
-            </div>
-        </div>
+//         <div class="item">
+//             <img src="${immagine}" alt="">
+//             <div class="desc-wrap">
+//                 <h2 class="title">${titolo}</h2>
+//                 <p class="subtitle">${descrizione}</p>
+//             </div>
+//         </div>
 
-    `
-}
+//     `
+// }
 
-function controlliSlider ( {immagine} ) {
+// function controlliSlider ( {immagine} ) {
 
-    return `
-        <li class="controls">
-            <img src="${immagine}" alt="">
-        </li>
-    `
-}
+//     return `
+//         <li class="controls">
+//             <img src="${immagine}" alt="">
+//         </li>
+//     `
+// }
 
-// recupero dal DOM gli elementi creati e inseriti e li metto in un array
+// // recupero dal DOM gli elementi creati e inseriti e li metto in un array
 
-const itemsSlide = [...document.getElementsByClassName('item')];
-//console.log(itemsSlide);
+// const itemsSlide = [...document.getElementsByClassName('item')];
+// //console.log(itemsSlide);
 
-// creo un array con la lista controlli img dal DOM e imposto active corrente
+// // creo un array con la lista controlli img dal DOM e imposto active corrente
 
-const previewSlide = [...document.getElementsByClassName('controls')];
-//console.log(previewSlide);
+// const previewSlide = [...document.getElementsByClassName('controls')];
+// //console.log(previewSlide);
 
-previewSlide[activeElement].classList.add('active');
+// previewSlide[activeElement].classList.add('active');
 
-// aggiungo la classe active all'elemneto corrente
+// // aggiungo la classe active all'elemneto corrente
 
-itemsSlide[activeElement].classList.add('active');
+// itemsSlide[activeElement].classList.add('active');
 
-// ascoltare l'evento click
+// // ascoltare l'evento click
 
-arrowDown.addEventListener('click', incremetaSlide);
+// arrowDown.addEventListener('click', incremetaSlide);
 
-arrowUp.addEventListener('click', decrementaSlide);
+// arrowUp.addEventListener('click', decrementaSlide);
 
-previewSlide.forEach((element, index) => element.addEventListener('click', function(){
+// previewSlide.forEach((element, index) => element.addEventListener('click', function(){
 
-    //console.log(element);
+//     //console.log(element);
 
-    // tolgo active al preview
+//     // tolgo active al preview
 
-    removeActive(itemsSlide, [activeElement], previewSlide);
+//     removeActive(itemsSlide, [activeElement], previewSlide);
 
-     // setto contatore 
+//      // setto contatore 
 
-    activeElement = index;
+//     activeElement = index;
 
-         // aggiungo active
+//          // aggiungo active
 
-    addActive(itemsSlide, [activeElement], previewSlide);
+//     addActive(itemsSlide, [activeElement], previewSlide);
 
-}))
+// }))
 
-// funzioni relative al cambio slide e preview
+// // funzioni relative al cambio slide e preview
 
-function incremetaSlide() {
+// function incremetaSlide() {
 
-    if (activeElement < itemsSlide.length - 1) {
+//     if (activeElement < itemsSlide.length - 1) {
 
-        // rimuovere la classe active 
-        removeActive(itemsSlide, [activeElement], previewSlide);
+//         // rimuovere la classe active 
+//         removeActive(itemsSlide, [activeElement], previewSlide);
     
-        // incrementare il contatore o diminuire
-        activeElement++
+//         // incrementare il contatore o diminuire
+//         activeElement++
     
-        // aggiungere la classe active
-        addActive(itemsSlide, [activeElement], previewSlide);
+//         // aggiungere la classe active
+//         addActive(itemsSlide, [activeElement], previewSlide);
 
-    }
+//     }
 
-}
+// }
 
-function decrementaSlide () {
+// function decrementaSlide () {
 
-    if (activeElement > 0 ) {
+//     if (activeElement > 0 ) {
 
-        // rimuovere la classe active 
-        removeActive(itemsSlide, [activeElement], previewSlide);
-        // incrementare il contatore o diminuire
-        activeElement--
+//         // rimuovere la classe active 
+//         removeActive(itemsSlide, [activeElement], previewSlide);
+//         // incrementare il contatore o diminuire
+//         activeElement--
         
-        // aggiungere la classe active
-        addActive(itemsSlide, [activeElement], previewSlide);
-    }
+//         // aggiungere la classe active
+//         addActive(itemsSlide, [activeElement], previewSlide);
+//     }
 
-}
+// }
 
-function addActive (itemsSlide, activeElement, previewSlide) {
+// function addActive (itemsSlide, activeElement, previewSlide) {
 
-    itemsSlide[activeElement].classList.add('active');
-    previewSlide[activeElement].classList.add('active');
-}
+//     itemsSlide[activeElement].classList.add('active');
+//     previewSlide[activeElement].classList.add('active');
+// }
 
-function removeActive (itemsSlide, activeElement, previewSlide) {
+// function removeActive (itemsSlide, activeElement, previewSlide) {
 
-    itemsSlide[activeElement].classList.remove('active');
-    previewSlide[activeElement].classList.remove('active');
-}
+//     itemsSlide[activeElement].classList.remove('active');
+//     previewSlide[activeElement].classList.remove('active');
+// }

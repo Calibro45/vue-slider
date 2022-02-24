@@ -12,27 +12,15 @@
 <body>
 
     <main>
-
-        
-        <div class="slider">
-            
-            <div class="slide-wrapper">
-                
-            </div>
-            
-            <div class="arrow">
-                <span class="arrow-up"><i class="fas fa-chevron-up"></i></span>
-                <span class="arrow-down"><i class="fas fa-chevron-down"></i></span>
-            </div>
-            
-        </div>
         
         <div id="app">
 
             <div class="slider">
             
                 <div class="slide-wrapper">
-                    <div v-for="item in slideObject" class="item active">
+                    <div 
+                    v-for="(item, i ) in slideObject" 
+                    :class="['item', (i === 0) ? {active} : '']">
                         <img :src="item.immagine" alt="">
                         <div class="desc-wrap">
                             <h2 class="title">{{ item.titolo }}</h2>
@@ -47,7 +35,7 @@
                 </div>
 
                 <ol class="controls-wrapper">
-                    <li v-for="value in slideObject" class="controls active">
+                    <li v-for="value in slideObject" class="controls">
                         <img :src="value.immagine" alt="">
                     </li>
                 </ol>
