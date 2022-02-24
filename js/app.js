@@ -54,9 +54,13 @@ const app = new Vue ( {
         selectSlides: function(i) {
 
             this.currentSlide = i;
-        }
+        },
     },
- 
+    created() {
+        setInterval( () => {
+            this.incrementaSlides()
+        }, 3000);
+    }
 })
 console.log(app);
 
