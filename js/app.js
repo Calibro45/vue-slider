@@ -32,13 +32,18 @@ const app = new Vue ( {
         currentSlide: 0,   
     },
     methods: {
-        incrementaSlides: function() {
+        incrementaSlides: function() {   
 
             this.currentSlide++;
+
+            this.currentSlide = this.currentSlide % this.slideObject.length;
+
         },
         decrementaSlides: function() {
 
             this.currentSlide--;
+
+            
         }
     },
  
