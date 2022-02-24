@@ -57,10 +57,10 @@ const app = new Vue ( {
         },
     },
     created() {
-        setInterval( () => {
+        let slideLoop = setInterval( () => {
             this.incrementaSlides()
         }, 3000);
-    }
+    },
 })
 console.log(app);
 
