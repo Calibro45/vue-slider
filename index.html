@@ -20,7 +20,7 @@
                 <div class="slide-wrapper">
                     <div 
                     v-for="(item, i ) in slideObject" 
-                    :class="['item', (i === 0) ? {active} : '']">
+                    :class="['item', (i === currentSlide) ? 'active' : '']">
                         <img :src="item.immagine" alt="">
                         <div class="desc-wrap">
                             <h2 class="title">{{ item.titolo }}</h2>
@@ -30,8 +30,8 @@
                 </div>
                 
                 <div class="arrow">
-                    <span class="arrow-up"><i class="fas fa-chevron-up"></i></span>
-                    <span class="arrow-down"><i class="fas fa-chevron-down"></i></span>
+                    <span class="arrow-up" @click="decrementaSlides"><i class="fas fa-chevron-up"></i></span>
+                    <span class="arrow-down" @click="incrementaSlides"><i class="fas fa-chevron-down"></i></span>
                 </div>
 
                 <ol class="controls-wrapper">
