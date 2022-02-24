@@ -13,20 +13,47 @@
 
     <main>
 
+        
+        <div class="slider">
+            
+            <div class="slide-wrapper">
+                
+            </div>
+            
+            <div class="arrow">
+                <span class="arrow-up"><i class="fas fa-chevron-up"></i></span>
+                <span class="arrow-down"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            
+        </div>
+        
         <div id="app">
 
             <div class="slider">
-                
+            
                 <div class="slide-wrapper">
-                    
+                    <div v-for="item in slideObject" class="item active">
+                        <img :src="item.immagine" alt="">
+                        <div class="desc-wrap">
+                            <h2 class="title">{{ item.titolo }}</h2>
+                            <p class="subtitle">{{ item.descrizione }}</p>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="arrow">
                     <span class="arrow-up"><i class="fas fa-chevron-up"></i></span>
                     <span class="arrow-down"><i class="fas fa-chevron-down"></i></span>
                 </div>
+
+                <ol class="controls-wrapper">
+                    <li v-for="value in slideObject" class="controls active">
+                        <img :src="value.immagine" alt="">
+                    </li>
+                </ol>
                 
             </div>
+
 
         </div>
             
