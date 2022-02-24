@@ -49,7 +49,11 @@ const app = new Vue ( {
 
                 this.currentSlide = this.slideObject.length - 1;
             }
-            
+
+        },
+        selectSlides: function(i) {
+
+            this.currentSlide = i;
         }
     },
  
