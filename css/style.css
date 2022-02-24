@@ -108,6 +108,11 @@ main {
     outline: 2px solid transparent;
 }
 
+.controls img {
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
 .controls.active {
     outline: 2px solid #ccc;
     outline-offset: -2px;

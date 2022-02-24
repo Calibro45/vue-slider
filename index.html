@@ -35,7 +35,8 @@
                 </div>
 
                 <ol class="controls-wrapper">
-                    <li v-for="value in slideObject" class="controls">
+                    <li v-for="(value, i) in slideObject" 
+                    :class="['controls', (i === currentSlide) ? 'active' : '']">
                         <img :src="value.immagine" alt="">
                     </li>
                 </ol>
