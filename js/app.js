@@ -29,7 +29,8 @@ const app = new Vue ( {
                 descrizione: 'Vivi un emozionante storia in questa seconda parte dell\' avventura di Ellie e Joel, incentrata su un cammino fatto di violenza e vendetta.',
             },
         ], 
-        currentSlide: 0,   
+        currentSlide: 0,
+        loop: undefined,   
     },
     methods: {
         incrementaSlides: function() {   
@@ -55,11 +56,19 @@ const app = new Vue ( {
 
             this.currentSlide = i;
         },
+        slideLoop: function() {
+
+            this.loop = setInterval(this.incrementaSlides, 3000);
+
+        },
+        stopLoop: function() {
+
+            clearInterval(this.loop);
+
+        }
     },
     created() {
-        let slideLoop = setInterval( () => {
-            this.incrementaSlides()
-        }, 3000);
+        this.slideLoop();
     },
 })
 console.log(app);
